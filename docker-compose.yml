@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  broker:
+    build: ./broker/
+    hostname: vopen-broker
+    links:
+      - "auth"
+    ports:
+      - 0.0.0.0:1883:1883   # mqtt port
+      - 0.0.0.0:15675:15675 # web mqtt port
+    environment:
+      RABBITMQ_ERLANG_COOKIE: <erlang-cookie>
+
+  auth:
+    build: ./auth/
+    links:
+      - "usersdb"
+
+  usersdb:
+    image: mongo:latest
