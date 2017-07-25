@@ -1,6 +1,8 @@
 [submodule "vopen-broker"]
 	path = vopen-broker
 	url = git@github.com:openv2x/vopen-broker.git
+	fetchRecurseSubmodules = true
 [submodule "vopen-manager"]
 	path = vopen-manager
 	url = git@github.com:openv2x/vopen-manager.git
+	fetchRecurseSubmodules = true

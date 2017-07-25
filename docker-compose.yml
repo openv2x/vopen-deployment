@@ -17,8 +17,9 @@ services:
     build: ./vopen-broker/auth/
     links:
       - "usersdb"
+    volumes: # for development purposes
+      - ./vopen-broker/auth/app.js:/usr/app/app.js
+      - ./vopen-broker/auth/db.js:/usr/app/db.js
 
   usersdb:
     image: mongo:latest
-    ports:
-      - 127.0.0.1:27017:27017
