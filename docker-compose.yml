@@ -3,7 +3,7 @@ version: '2'
 services:
 
   broker:
-    build: ./broker/
+    build: ./vopen-broker/broker/
     hostname: vopen-broker
     links:
       - "auth"
@@ -14,9 +14,11 @@ services:
       RABBITMQ_ERLANG_COOKIE: <erlang-cookie>
 
   auth:
-    build: ./auth/
+    build: ./vopen-broker/auth/
     links:
       - "usersdb"
 
   usersdb:
     image: mongo:latest
+    ports:
+      - 127.0.0.1:27017:27017
